@@ -1,0 +1,16 @@
+{
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
+ 
+  "scripts": {
+    "dev": "http-server .",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier . --write",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "echo \"No build required\""
+  }
+
+}
