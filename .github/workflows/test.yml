@@ -1,26 +1,40 @@
-name: PORTEFOLIO CI
+name: PORTEFOLIO CI & DEPLOY
 
 on: 
   push:
+    branches:
+      - main # Le déploiement ne se fera que si tu pushes sur la branche principale (souvent main ou master)
 
 jobs:
-
-  test:
-
+  test-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-
-      - uses: actions/Checkout@v4
+      - uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v3
         with:
           version: 9
+
       - uses: actions/setup-node@v4
         with:
            node-version: 22
            cache: "pnpm"
+
+      # 1. Installation des dépendances
       - run: pnpm install
+
+      # 2. Le test ESLint (si cette étape échoue, le déploiement s'arrête !)
       - run: pnpm run lint 
+
+      # 3. Le build de ton application
       - run: pnpm run build
 
+      # 4. Le déploiement sur Vercel (seulement si le lint et le build ont réussi)
+      - name: Deploy to Vercel
+        uses: amondnet/vercel-action@v20
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod' # Indique à Vercel que c'est le déploiement de production final
