@@ -1,21 +1,13 @@
 {
-  "type": "module",
-  "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "eslint": "^10.8.0",
-    "globals": "^17.8.0",
-    "http-server": "^14.1.1"
-  },
+  "name": "portfolio-html-tailwind",
+  "version": "1.0.0",
+  "description": "Portfolio avec HTML et TailwindCSS",
+  "main": "index.html",
   "scripts": {
-    "dev": "http-server .",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix",
-    "format": "prettier . --write",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "build": "echo \"No build required\""
+    "build": "npx tailwindcss -i ./theme-cssglobale.css -o ./dist/output.css --minify",
+    "dev": "npx tailwindcss -i ./theme-cssglobale.css -o ./dist/output.css --watch"
   },
-  "dependencies": {
-    "lint": "^1.2.2"
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
   }
 }
