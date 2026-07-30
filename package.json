@@ -2,7 +2,6 @@
   "devDependencies": {
     "http-server": "^14.1.1"
   },
- 
   "scripts": {
     "dev": "http-server .",
     "lint": "eslint src",
@@ -11,6 +10,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "build": "echo \"No build required\""
+  },
+  "dependencies": {
+    "lint": "^1.2.2"
   }
-
 }

@@ -1,0 +1,21 @@
+name: PORTEFOLIO CI
+
+on: 
+  push:
+
+jobs:
+
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - uses: action/Checkout@v4
+
+      - uses: action/setup-node@v4
+        with:
+           node-version: 22
+      - run: npm run lint 
+      - run: npm run build
+
