@@ -1,9 +1,9 @@
 name: PORTEFOLIO CI & DEPLOY
 
-on: 
+on:
   push:
     branches:
-      - main # Le déploiement ne se fera que si tu pushes sur la branche principale (souvent main ou master)
+      - main # Le déploiement ne se fera que si tu pushes sur la branche principale
 
 jobs:
   test-and-deploy:
@@ -18,23 +18,28 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-           node-version: 22
-           cache: "pnpm"
+          node-version: 22
+          cache: "pnpm"
 
       # 1. Installation des dépendances
-      - run: pnpm install
+      - name: Install dependencies
+        run: pnpm install
 
       # 2. Le test ESLint (si cette étape échoue, le déploiement s'arrête !)
-      - run: pnpm run lint 
+      - name: Lint
+        run: pnpm run lint
 
       # 3. Le build de ton application
-      - run: pnpm run build
+      - name: Build
+        run: pnpm run build
 
-      # 4. Le déploiement sur Vercel (seulement si le lint et le build ont réussi)
+      # 4. Installation de la Vercel CLI
+      - name: Install Vercel CLI
+        run: pnpm add -g vercel
+
+      # 5. Le déploiement sur Vercel (seulement si le lint et le build ont réussi)
       - name: Deploy to Vercel
-        uses: amondnet/vercel-action@v20
-        with:
-          vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
-          vercel-args: '--prod' # Indique à Vercel que c'est le déploiement de production final
+        run: vercel deploy --prod --token=${{ secrets.VERCEL_TOKEN }}
+        env:
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
