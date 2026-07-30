@@ -25,8 +25,7 @@ jobs:
         with:
           node-version: 22
           cache: 'pnpm'
-      - name: Install dependencies
-        run: pnpm install
+          run: pnpm install
       - name: Build CSS
         run: pnpm run build
       - name: Setup Pages
