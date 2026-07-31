@@ -3,13 +3,131 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
+  <title>Manda Aroniaina – Développeur Web &amp; Mobile</title>
+  <meta name="description" content="Portfolio de Manda Aroniaina Andrainiony, développeur web et mobile de qualité pour des résultats de qualité.">
   <link href="./dist/output.css" rel="stylesheet">
-  <meta name="description" content="Portfolio professionnel">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+  <link rel="stylesheet" href="./style.css">
+
 </head>
-<body class="bg-slate-50 min-h-screen flex items-center justify-center">
-  <div>
-    
-  </div>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav role="navigation" aria-label="Navigation principale">
+    <button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul id="nav-menu">
+      <li><a href="#aceuil" class="active" id="nav-accueil">Aceuil</a></li>
+      <li><a href="#apropos" id="nav-apropos">A propos</a></li>
+      <li><a href="#skills" id="nav-skills">Skils</a></li>
+      <li><a href="#projets" id="nav-projets">Projet</a></li>
+    </ul>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="aceuil" aria-label="Section d'accueil">
+
+    <!-- Gauche : Texte + Sociaux -->
+    <div class="hero-left">
+
+      <h1 class="hero-title fade-up d1">
+       <span class="text-black">Bonjour je suis</span> Manda
+      </h1>
+
+      <p class="hero-subtitle fade-up d2">
+        votre developeur de qualité<br>
+        pour des resultat de qualité
+      </p>
+
+      <!-- Liens sociaux -->
+      <div class="social-links fade-up d3" role="list" aria-label="Contacts">
+
+        <a href="https://github.com/MandaHarou" class="social-item" role="listitem"
+           target="_blank" rel="noopener noreferrer" aria-label="GitHub MandaHarou" id="link-github">
+          <div class="social-icon-wrap">
+            <i class="fi fi-brands-github"></i>
+          </div>
+          <span class="social-text">MandaHarou</span>
+        </a>
+
+        <a href="https://linkedin.com/in/manda-aroniaina" class="social-item" role="listitem"
+           target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" id="link-linkedin">
+          <div class="social-icon-wrap">
+            <i class="fi fi-brands-linkedin"></i>
+          </div>
+          <span class="social-text">likdinprofile</span>
+        </a>
+
+        <a href="mailto:andrainiony@gmail.com" class="social-item" role="listitem"
+           aria-label="Gmail andrainiony@gmail.com" id="link-email">
+          <div class="social-icon-wrap">
+            <i class="fi fi-rr-envelope"></i>
+          </div>
+          <span class="social-text">andrainiony@gmail.com</span>
+        </a>
+
+        <a href="tel:+2610340352876" class="social-item" role="listitem"
+           aria-label="Téléphone 0340352876" id="link-phone">
+          <div class="social-icon-wrap">
+            <i class="fi fi-rr-phone-call"></i>
+          </div>
+          <span class="social-text">0340352876</span>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- Droite : Photo -->
+    <div class="hero-right">
+      <div class="photo-wrapper fade-up d5">
+        <div class="photo-circle">
+          <img
+            src="./assets/MANDA_Aroniaina.jpeg"
+            alt="Manda Aroniaina Andrainiony – Développeur Web et Mobile"
+            width="430"
+            height="430"
+            loading="eager"
+          >
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <script>
+    // Hamburger
+    const btn = document.getElementById('hamburger-btn');
+    const menu = document.getElementById('nav-menu');
+    btn.addEventListener('click', () => {
+      const open = menu.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+    });
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Active nav
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav a');
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(l => l.classList.remove('active'));
+          const a = document.querySelector('nav a[href="#' + e.target.id + '"]');
+          if (a) a.classList.add('active');
+        }
+      });
+    }, { threshold: 0.5 });
+    sections.forEach(s => io.observe(s));
+  </script>
+
 </body>
 </html>
