@@ -12,6 +12,17 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* =========================================
+   SCROLL SNAP – Ancrage de chaque section
+========================================= */
+html {
+  scroll-behavior: smooth;
+  /* Snap doux : la section la plus proche se recentre au repos du scroll */
+  scroll-snap-type: y proximity;
+  /* Compense la navbar fixe de 80px pour que l'ancre #section atterrisse bien */
+  scroll-padding-top: 80px;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   font-size: 1.05rem; /* a bit larger */
@@ -113,6 +124,7 @@ nav a.active::after { width: 100%; background: var(--accent-hover); }
   padding: 0 5rem;
   max-width: 1300px;
   margin: 0 auto;
+  scroll-snap-align: start; /* Accroche la section au début du viewport */
 }
 
 /* --- COLONNE GAUCHE --- */
@@ -243,6 +255,7 @@ h1.hero-title {
   padding: 0 5rem;
   max-width: 1000px;
   margin: 0 auto;
+  scroll-snap-align: start;
 }
 
 .projets-title {
@@ -306,6 +319,7 @@ h1.hero-title {
   position: absolute;
   inset: 0;
   display: flex;
+  flex-direction: column; /* Permet d'empiler le titre et le texte explicatif */
   align-items: center;
   justify-content: center;
   font-size: 1.6rem;
@@ -317,12 +331,29 @@ h1.hero-title {
   letter-spacing: 0.02em;
   text-align: center;
   padding: 0.5rem;
-  transition: background 0.25s, font-size 0.25s;
+  transition: background 0.25s, transform 0.25s;
+}
+
+/* Indicateur explicite de clic (KISS) */
+.projet-name::after {
+  content: 'Cliquez pour voir les détails';
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent-hover);
+  background: #ffffff;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  margin-top: 0.8rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s, background 0.3s;
 }
 
 .projet-card:hover .projet-name {
   background: rgba(255,255,255,0.25);
-  font-size: 1.8rem;
+}
+.projet-card:hover .projet-name::after {
+  transform: scale(1.05);
+  background: var(--bg);
 }
 
 /* Stack techno sous la carte */
@@ -495,6 +526,7 @@ h1.hero-title {
   padding: 0 5rem;
   max-width: 1300px;
   margin: 0 auto;
+  scroll-snap-align: start;
 }
 
 .skills-header {
@@ -607,6 +639,7 @@ h1.hero-title {
   padding: 0 5rem;
   max-width: 1300px;
   margin: 0 auto;
+  scroll-snap-align: start;
 }
 
 /* --- Zone mockups (gauche) --- */
@@ -794,6 +827,7 @@ h1.hero-title {
 }
 
 @media (max-width: 768px) {
+  html { scroll-snap-type: none; } /* Désactive le snap sur mobile */
   nav { position: relative; justify-content: center; padding: 1.2rem 1.5rem; }
   .hamburger { display: flex; }
 

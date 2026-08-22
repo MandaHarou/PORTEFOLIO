@@ -44,10 +44,12 @@
     .fade-up{opacity:0;transform:translateY(24px);animation:fadeUp .65s ease forwards}
     @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
     .d1{animation-delay:.05s}.d2{animation-delay:.2s}.d3{animation-delay:.35s}.d4{animation-delay:.5s}.d5{animation-delay:.15s}
-    /* Scroll-smooth */
-    html{scroll-behavior:smooth}
+    /* Scroll snap */
+    html{scroll-behavior:smooth;scroll-snap-type:y proximity;scroll-padding-top:80px}
+    #aceuil{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;align-content:center;gap:2rem;padding:0 5rem;max-width:1300px;margin:0 auto;scroll-snap-align:start}
     /* Mobile nav */
     @media(max-width:768px){
+      html{scroll-snap-type:none}
       .hamburger{display:flex}
       nav ul{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--border);padding:1.2rem 2rem;gap:1.2rem;z-index:50}
       nav ul.open{display:flex}
@@ -114,11 +116,14 @@
       </p>
 
       <!-- Liens sociaux -->
+      <p class="fade-up d3" style="font-size: 0.85rem; color: var(--gray); margin-bottom: -0.5rem; font-weight: 500;">
+        Cliquez sur un bouton pour me contacter :
+      </p>
       <ul class="social-links fade-up d3" aria-label="Contacts" role="list">
 
         <li>
           <a href="https://github.com/MandaHarou" class="social-item"
-             target="_blank" rel="noopener noreferrer" aria-label="GitHub MandaHarou" id="link-github">
+             target="_blank" rel="noopener noreferrer" aria-label="GitHub MandaHarou" id="link-github" title="Cliquez pour visiter mon profil GitHub">
             <div class="social-icon-wrap">
               <i class="fi fi-brands-github"></i>
             </div>
@@ -128,7 +133,7 @@
 
         <li>
           <a href="https://linkedin.com/in/manda-aroniaina" class="social-item"
-             target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" id="link-linkedin">
+             target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" id="link-linkedin" title="Cliquez pour visiter mon profil LinkedIn">
             <div class="social-icon-wrap">
               <i class="fi fi-brands-linkedin"></i>
             </div>
@@ -138,7 +143,7 @@
 
         <li>
           <a href="mailto:andrainiony@gmail.com" class="social-item"
-             aria-label="Gmail andrainiony@gmail.com" id="link-email">
+             aria-label="Gmail andrainiony@gmail.com" id="link-email" title="Cliquez pour m'envoyer un email">
             <div class="social-icon-wrap">
               <i class="fi fi-rr-envelope"></i>
             </div>
@@ -148,7 +153,7 @@
 
         <li>
           <a href="tel:+2610340352876" class="social-item"
-             aria-label="Téléphone 0340352876" id="link-phone">
+             aria-label="Téléphone 0340352876" id="link-phone" title="Cliquez pour m'appeler">
             <div class="social-icon-wrap">
               <i class="fi fi-rr-phone-call"></i>
             </div>
@@ -207,7 +212,7 @@
 
         <div class="mockup-circle">
           <img
-            src="./assets/DangerZone.webp"
+            src="./assets/Simeso.webp"
             alt="Aperçu projet"
             loading="lazy"
           >
@@ -229,10 +234,10 @@
       </p>
 
       <p class="apropos-invite">
-        Découvrez quelques-unes de mes réalisations ↓
+        Cliquez sur la flèche pour découvrir mes projets ↓
       </p>
 
-      <a href="#projets" class="apropos-arrow" aria-label="Voir les projets">
+      <a href="#projets" class="apropos-arrow" aria-label="Voir les projets" title="Cliquez ici pour descendre vers la section projets">
         <i class="fi fi-rr-arrow-down"></i>
       </a>
 
@@ -245,7 +250,7 @@
 
     <div class="skills-header">
       <h2 class="skills-title">Skills</h2>
-      <p class="skills-sub">A curated overview of my technical expertise, categorized by discipline.</p>
+      <p class="skills-sub">Un aperçu de mon expertise technique, classée par domaine.</p>
     </div>
 
     <div class="skills-grid">
@@ -331,9 +336,9 @@
     <div class="projets-grid">
 
       <!-- Mila-S -->
-      <div class="projet-card" data-desc="Mila-S est une plateforme complète et performante (Web & Mobile). Elle intègre un backend robuste conçu pour gérer efficacement des opérations complexes tout en offrant une expérience utilisateur fluide et intuitive.">
+      <div class="projet-card" data-desc="Mila-S est une solution FinTech (Web &amp; Mobile) permettant d'échanger des crypto-monnaies en Ariary via Mobile Money. Basée sur une architecture microservices performante, elle intègre une API Gateway en Python, un backend rapide Node.js (Fastify) avec MongoDB, et une expérience mobile fluide développée sous React Native et React.">
         <div class="projet-img-wrap">
-          <img src="./assets/MilaS.webp" alt="Aperçu projet Mila-S" loading="lazy">
+          <img src="./assets/Mila-S_logo-withe.svg" alt="Aperçu projet Mila-S" loading="lazy">
           <span class="projet-name">Mila-S</span>
         </div>
         <div class="projet-stack">
@@ -347,7 +352,7 @@
       </div>
 
       <!-- ASJA-WEB -->
-      <div class="projet-card" data-desc="ASJA-WEB est une plateforme web vitrine moderne et responsive. Conçue avec un design épuré et des animations fluides, elle garantit une navigation agréable et met en valeur le contenu de manière optimale sur tous les écrans.">
+      <div class="projet-card" data-desc="ASJA-WEB est le site web officiel de l'Université ASJA. Sélectionné au sein d'une équipe restreinte de 3 étudiants en informatique, j'ai co-développé cette plateforme sous React et Tailwind CSS afin d'accroître la visibilité institutionnelle de l'université avec une interface moderne, fluide et 100% responsive.">
         <div class="projet-img-wrap">
           <img src="./assets/AsjaWeb.webp" alt="Aperçu projet ASJA-WEB" loading="lazy">
           <span class="projet-name">ASJA-WEB</span>
@@ -359,9 +364,9 @@
       </div>
 
       <!-- SIMESO -->
-      <div class="projet-card" data-desc="SIMESO est une solution hybride composée d'une application mobile et d'un tableau de bord backend. Elle permet un suivi et une gestion en temps réel grâce à une infrastructure cloud moderne et fiable.">
+      <div class="projet-card" data-desc="SIMESO est une application mobile de messagerie instantanée en réseau local. Développée en binôme lors de ma 2ème année de Licence en informatique, j'ai pris en charge la conception du backend sous Node.js (Express) et MongoDB, associée à une application mobile développée sous Flutter.">
         <div class="projet-img-wrap">
-          <img src="./assets/DangerZone.webp" alt="Aperçu projet SIMESO" loading="lazy">
+          <img src="./assets/Simeso.webp" alt="Aperçu projet SIMESO" loading="lazy">
           <span class="projet-name">SIMESO</span>
         </div>
         <div class="projet-stack">
@@ -373,10 +378,10 @@
       </div>
 
       <!-- Voir plus -->
-      <a href="https://taap.it/manda" target="_blank" rel="noopener noreferrer" class="projet-card projet-card--more" style="text-decoration: none;">
+      <a href="https://taap.it/manda" target="_blank" rel="noopener noreferrer" class="projet-card projet-card--more" style="text-decoration: none;" title="Cliquez pour découvrir d'autres projets sur mon profil complet">
         <div class="projet-img-wrap projet-more-wrap">
           <span class="projet-plus">+</span>
-          <span class="projet-voir-plus">Voir plus</span>
+          <span class="projet-voir-plus">Cliquez pour voir d'autres projets</span>
         </div>
       </a>
 
