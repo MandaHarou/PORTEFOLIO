@@ -27,7 +27,7 @@
 <body>
 
   <!-- ===== NAVBAR ===== -->
-  <nav role="navigation" aria-label="Navigation principale">
+  <nav aria-label="Navigation principale">
     <button class="hamburger" id="hamburger-btn" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu">
       <span></span><span></span><span></span>
     </button>
@@ -39,7 +39,7 @@
     </ul>
   </nav>
 
-  <main role="main">
+  <main>
   <!-- ===== HERO ===== -->
   <section id="aceuil" aria-label="Section d'accueil">
 
@@ -327,11 +327,16 @@
   </main>
 
   <!-- Modal pour les projets -->
-  <div id="project-modal" class="modal-overlay" aria-hidden="true" role="dialog">
+  <div id="project-modal" class="modal-overlay"
+       role="dialog"
+       aria-modal="true"
+       aria-hidden="true"
+       aria-labelledby="modal-title"
+       aria-describedby="modal-desc">
     <div class="modal-content">
       <button id="modal-close" class="modal-close" aria-label="Fermer la fenêtre">&times;</button>
       <div class="modal-img-wrap">
-        <img id="modal-img" src="" alt="Project Image">
+        <img id="modal-img" src="" alt="">
       </div>
       <div class="modal-body">
         <h3 id="modal-title" class="modal-title">Titre</h3>
@@ -387,22 +392,30 @@
         
         modalTitle.textContent = title;
         modalImg.src = imgSrc;
+        modalImg.alt = `Aperçu du projet ${title}`;
         modalDesc.textContent = desc;
         modalStack.innerHTML = stackHTML;
         
         modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        modalClose.focus(); // focus piégé dans le dialog
       });
     });
 
     const closeModal = () => {
       modal.classList.remove('active');
+      modal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
     };
 
     modalClose.addEventListener('click', closeModal);
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closeModal();
+    });
+    // Fermeture au clavier (Escape)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
     });
   </script>
 <footer>
