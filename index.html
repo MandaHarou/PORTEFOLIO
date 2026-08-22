@@ -5,14 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manda Aroniaina – Développeur Web &amp; Mobile</title>
   <meta name="description" content="Portfolio de Manda Aroniaina Andrainiony, développeur web et mobile de qualité pour des résultats de qualité.">
-  <link href="./dist/output.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn-uicons.flaticon.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
-  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+
+  <!-- Tailwind & Main CSS (Critical) -->
+  <link href="./dist/output.css" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
+
+  <!-- Google Fonts (Defer) -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"></noscript>
+
+  <!-- Flaticon Icons (Defer) -->
+  <link rel="preload" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css"></noscript>
+  <link rel="preload" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css"></noscript>
 
 </head>
 <body>
@@ -37,7 +46,7 @@
     <!-- Gauche : Texte + Sociaux -->
     <div class="hero-left">
 
-      <h1 class="hero-title fade-up d1">
+      <h1 class="hero-title">
        <span class="text-black">Bonjour je suis</span> Manda
       </h1>
 
@@ -86,7 +95,7 @@
 
     <!-- Droite : Photo -->
     <div class="hero-right">
-      <div class="photo-wrapper fade-up d5">
+      <div class="photo-wrapper">
         <div class="photo-circle">
           <img
             src="./assets/MANDA_Aroniaina.webp"
@@ -94,6 +103,7 @@
             width="430"
             height="430"
             loading="eager"
+            fetchpriority="high"
           >
         </div>
       </div>
