@@ -8,6 +8,7 @@
   <link href="./dist/output.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn-uicons.flaticon.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css'>
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'>
@@ -29,6 +30,7 @@
     </ul>
   </nav>
 
+  <main role="main">
   <!-- ===== HERO ===== -->
   <section id="aceuil" aria-label="Section d'accueil">
 
@@ -87,7 +89,7 @@
       <div class="photo-wrapper fade-up d5">
         <div class="photo-circle">
           <img
-            src="./assets/MANDA_Aroniaina.jpeg"
+            src="./assets/MANDA_Aroniaina.webp"
             alt="Manda Aroniaina Andrainiony – Développeur Web et Mobile"
             width="430"
             height="430"
@@ -108,7 +110,7 @@
       <div class="mockup-phone">
         <div class="phone-frame">
           <img
-            src="./assets/MilaS.png"
+            src="./assets/MilaS.webp"
             alt="Aperçu projet mobile"
             loading="lazy"
           >
@@ -120,7 +122,7 @@
         <div class="mockup-tablet">
           <div class="tablet-frame">
             <img
-              src="./assets/AsjaWeb.png"
+              src="./assets/AsjaWeb.webp"
               alt="Aperçu projet web tablette"
               loading="lazy"
             >
@@ -129,7 +131,7 @@
 
         <div class="mockup-circle">
           <img
-            src="./assets/DangerZone.png"
+            src="./assets/DangerZone.webp"
             alt="Aperçu projet"
             loading="lazy"
           >
@@ -255,7 +257,7 @@
       <!-- Mila-S -->
       <div class="projet-card" data-desc="Mila-S est une plateforme complète et performante (Web & Mobile). Elle intègre un backend robuste conçu pour gérer efficacement des opérations complexes tout en offrant une expérience utilisateur fluide et intuitive.">
         <div class="projet-img-wrap">
-          <img src="./assets/MilaS.png" alt="Aperçu projet Mila-S" loading="lazy">
+          <img src="./assets/MilaS.webp" alt="Aperçu projet Mila-S" loading="lazy">
           <span class="projet-name">Mila-S</span>
         </div>
         <div class="projet-stack">
@@ -271,7 +273,7 @@
       <!-- ASJA-WEB -->
       <div class="projet-card" data-desc="ASJA-WEB est une plateforme web vitrine moderne et responsive. Conçue avec un design épuré et des animations fluides, elle garantit une navigation agréable et met en valeur le contenu de manière optimale sur tous les écrans.">
         <div class="projet-img-wrap">
-          <img src="./assets/AsjaWeb.png" alt="Aperçu projet ASJA-WEB" loading="lazy">
+          <img src="./assets/AsjaWeb.webp" alt="Aperçu projet ASJA-WEB" loading="lazy">
           <span class="projet-name">ASJA-WEB</span>
         </div>
         <div class="projet-stack">
@@ -283,7 +285,7 @@
       <!-- SIMESO -->
       <div class="projet-card" data-desc="SIMESO est une solution hybride composée d'une application mobile et d'un tableau de bord backend. Elle permet un suivi et une gestion en temps réel grâce à une infrastructure cloud moderne et fiable.">
         <div class="projet-img-wrap">
-          <img src="./assets/DangerZone.png" alt="Aperçu projet SIMESO" loading="lazy">
+          <img src="./assets/DangerZone.webp" alt="Aperçu projet SIMESO" loading="lazy">
           <span class="projet-name">SIMESO</span>
         </div>
         <div class="projet-stack">
@@ -303,6 +305,8 @@
       </a>
 
     </div>
+
+  </main>
 
   <!-- Modal pour les projets -->
   <div id="project-modal" class="modal-overlay" aria-hidden="true" role="dialog">
@@ -385,11 +389,11 @@
   </script>
 <footer>
   <p class="footer-copy">© 2024 Andrainiony Manda Aroniaina. Curated Minimalism.</p>
-  <li class="footer-links" aria-label="Liens sociaux footer">
-    <a href="https://linkedin.com/in/manda-aroniaina" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    <a href="https://github.com/MandaHarou" target="_blank" rel="noopener noreferrer">GitHub</a>
-    <a href="mailto:andrainiony@gmail.com">Mail</a>
-  </li>
+  <ul class="footer-links" aria-label="Liens sociaux footer">
+    <li><a href="https://linkedin.com/in/manda-aroniaina" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    <li><a href="https://github.com/MandaHarou" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+    <li><a href="mailto:andrainiony@gmail.com">Mail</a></li>
+  </ul>
 </footer>
 </body>
 </html>
