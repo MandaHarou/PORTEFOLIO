@@ -5,23 +5,81 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Manda Aroniaina – Développeur Web &amp; Mobile</title>
   <meta name="description" content="Portfolio de Manda Aroniaina Andrainiony, développeur web et mobile de qualité pour des résultats de qualité.">
+
+  <!-- ===== CSS CRITIQUE INLINE (zéro réseau pour le premier paint) ===== -->
+  <style>
+    /* Variables */
+    :root{--accent:#0369a1;--accent-hover:#075985;--black:#111111;--gray:#374151;--bg:#f8fafc;--border:#e2e8f0}
+    /* Reset */
+    *{box-sizing:border-box;margin:0;padding:0}
+    /* Body */
+    body{font-family:Poppins,system-ui,sans-serif;font-size:1.05rem;line-height:1.7;background-color:var(--bg);color:var(--black);overflow-x:hidden;padding-top:80px}
+    h1,h2,h3,h4,.hero-title,.apropos-name,.skills-title,.projets-title{font-family:Outfit,system-ui,sans-serif}
+    /* Nav */
+    nav{position:fixed;top:0;left:0;right:0;width:100%;display:flex;justify-content:center;align-items:center;padding:1.5rem 2rem;background:rgba(248,250,252,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--border);z-index:100}
+    nav ul{display:flex;gap:3rem;list-style:none}
+    nav a{font-size:1.1rem;font-weight:700;color:var(--black);text-decoration:none;position:relative;transition:color .25s;letter-spacing:.01em}
+    nav a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--accent-hover);border-radius:2px;transition:width .3s ease}
+    nav a:hover,nav a.active{color:var(--accent-hover)}
+    nav a:hover::after,nav a.active::after{width:100%;background:var(--accent-hover)}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;position:absolute;right:1.5rem}
+    .hamburger span{display:block;width:24px;height:2.5px;background:var(--black);border-radius:2px;transition:all .3s}
+    /* Hero */
+    #aceuil{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;align-content:center;gap:2rem;padding:0 5rem;max-width:1300px;margin:0 auto}
+    .hero-left{display:flex;flex-direction:column;gap:1.4rem}
+    h1.hero-title{font-size:clamp(2.4rem,4.5vw,4rem);font-weight:900;color:var(--accent);line-height:1.1;letter-spacing:-.02em}
+    .hero-subtitle{font-size:clamp(1rem,1.8vw,1.25rem);font-weight:400;color:var(--black);line-height:1.75}
+    /* Social links */
+    .social-links{display:flex;align-items:flex-start;gap:1.4rem;flex-wrap:wrap;margin-top:.4rem;list-style:none;padding:0}
+    .social-item{display:flex;flex-direction:column;align-items:center;gap:.4rem;text-decoration:none}
+    .social-icon-wrap{width:54px;height:54px;border-radius:50%;border:2px solid var(--black);background:transparent;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--black);transition:all .25s}
+    .social-item:hover .social-icon-wrap{border-color:var(--accent);color:var(--accent);background:rgba(3,105,161,.07);transform:translateY(-3px);box-shadow:0 6px 18px rgba(3,105,161,.2)}
+    .social-text{font-size:.7rem;font-weight:500;color:var(--black);text-align:center;max-width:80px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    /* Photo hero */
+    .hero-right{display:flex;justify-content:center;align-items:center}
+    .photo-wrapper{position:relative;display:inline-flex;justify-content:center;align-items:center}
+    .photo-circle{width:clamp(260px,32vw,430px);height:clamp(260px,32vw,430px);border-radius:50%;overflow:hidden;border:3px solid #ef4444;background:#e5e7eb;box-shadow:0 8px 40px rgba(0,0,0,.1);transition:box-shadow .3s}
+    .photo-circle img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+    /* Animations fade-up */
+    .fade-up{opacity:0;transform:translateY(24px);animation:fadeUp .65s ease forwards}
+    @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+    .d1{animation-delay:.05s}.d2{animation-delay:.2s}.d3{animation-delay:.35s}.d4{animation-delay:.5s}.d5{animation-delay:.15s}
+    /* Scroll-smooth */
+    html{scroll-behavior:smooth}
+    /* Mobile nav */
+    @media(max-width:768px){
+      .hamburger{display:flex}
+      nav ul{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--border);padding:1.2rem 2rem;gap:1.2rem;z-index:50}
+      nav ul.open{display:flex}
+      #aceuil{grid-template-columns:1fr;padding:3rem 1.5rem;text-align:center;gap:2.5rem}
+      .hero-left{order:2;align-items:center}.hero-right{order:1}
+      .social-links{justify-content:center}
+    }
+    @media(max-width:480px){
+      #aceuil{padding:2rem 1.2rem 2.5rem}
+      .photo-circle{width:220px;height:220px}
+      .social-icon-wrap{width:46px;height:46px;font-size:1.1rem}
+      .social-links{gap:1rem}
+      h1.hero-title{font-size:2.2rem}
+    }
+    /* Icônes placeholder (évite le layout shift avant que Flaticon se charge) */
+    .fi{display:inline-block;width:1em;height:1em;font-style:normal}
+  </style>
+
+  <!-- ===== CSS NON-CRITIQUE – chargé en async (ne bloque plus le rendu) ===== -->
+  <link rel="preload" href="./dist/output.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="./dist/output.css"></noscript>
+  <link rel="preload" href="./style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="./style.css"></noscript>
+
+  <!-- ===== POLICES – préchargement optimisé ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdn-uicons.flaticon.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Poppins:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Poppins:wght@400;500;600&display=swap"></noscript>
 
-  <!-- Tailwind & Main CSS (Critical) -->
-  <link href="./dist/output.css" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
-
-  <!-- Google Fonts (Defer) -->
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"></noscript>
-
-  <!-- Flaticon Icons (Defer) -->
-  <link rel="preload" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css"></noscript>
-  <link rel="preload" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css"></noscript>
+  <!-- ===== ICÔNES FLATICON – chargées après le premier paint via JS ===== -->
+  <!-- Chargement différé via script en bas de page (voir fin du body) -->
 
 </head>
 <body>
@@ -426,5 +484,31 @@
     <li><a href="mailto:andrainiony@gmail.com">Mail</a></li>
   </ul>
 </footer>
+
+  <!-- ===== CHARGEMENT DIFFÉRÉ DES ICÔNES FLATICON ===== -->
+  <!-- Chargé après le premier paint via requestIdleCallback (évite les 23.8 KiB sur le chemin critique) -->
+  <script>
+    function loadFlaticon() {
+      var icons = [
+        'https://cdn-uicons.flaticon.com/2.1.0/uicons-brands/css/uicons-brands.css',
+        'https://cdn-uicons.flaticon.com/2.1.0/uicons-regular-rounded/css/uicons-regular-rounded.css'
+      ];
+      icons.forEach(function(href) {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        document.head.appendChild(link);
+      });
+    }
+    // Charger après que le navigateur est inactif (après le premier paint)
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadFlaticon, { timeout: 2000 });
+    } else {
+      // Fallback pour Safari
+      window.addEventListener('load', function() {
+        setTimeout(loadFlaticon, 200);
+      });
+    }
+  </script>
 </body>
 </html>
