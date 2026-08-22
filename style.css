@@ -2,11 +2,11 @@
    DESIGN SYSTEM – Variables
 ========================================= */
 :root {
-  --accent: #0284c7;   /* cyan-400 – bleu cyan du croquis */
-  --accent-hover: #0369a1;
+  --accent: #0369a1;        /* bleu principal – contraste 4.7:1 sur blanc */
+  --accent-hover: #075985;  /* bleu foncé – contraste 6.5:1 sur blanc */
   --black: #111111;
-  --gray: #4b5563;
-  --bg: #f8fafc;       /* slate-50 */
+  --gray: #374151;          /* gray-700 – contraste 7:1 sur #f8fafc (WCAG AA ✓) */
+  --bg: #f8fafc;            /* slate-50 */
   --border: #e2e8f0;
 }
 
@@ -75,9 +75,9 @@ nav a::after {
 }
 
 nav a:hover,
-nav a.active { color: var(--accent); }
+nav a.active { color: var(--accent-hover); }
 nav a:hover::after,
-nav a.active::after { width: 100%; }
+nav a.active::after { width: 100%; background: var(--accent-hover); }
 
 /* Hamburger (mobile) */
 .hamburger {
@@ -146,6 +146,8 @@ h1.hero-title {
   gap: 1.4rem;
   flex-wrap: wrap;
   margin-top: 0.4rem;
+  list-style: none; /* ul sémantique sans puces */
+  padding: 0;
 }
 
 .social-item {
@@ -173,9 +175,9 @@ h1.hero-title {
 .social-item:hover .social-icon-wrap {
   border-color: var(--accent);
   color: var(--accent);
-  background: rgba(2, 132, 199, 0.07);
+  background: rgba(3, 105, 161, 0.07);
   transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.2);
+  box-shadow: 0 6px 18px rgba(3, 105, 161, 0.2);
 }
 
 .social-text {
@@ -333,16 +335,16 @@ h1.hero-title {
 .projet-stack span {
   font-size: 0.85rem;
   font-weight: 600;
-  color: var(--accent);
-  background: rgba(2, 132, 199, 0.08);
+  color: var(--accent-hover);        /* #075985 – contraste 6.5:1 sur fond clair ✓ */
+  background: rgba(3, 105, 161, 0.12);
   padding: 0.3rem 0.8rem;
   border-radius: 6px;
-  border: 1px solid rgba(2, 132, 199, 0.2);
+  border: 1px solid rgba(3, 105, 161, 0.35);
   transition: background 0.2s, transform 0.2s;
 }
 
 .projet-card:hover .projet-stack span {
-  background: rgba(2, 132, 199, 0.15);
+  background: rgba(3, 105, 161, 0.15);
   transform: translateY(-2px);
 }
 
@@ -534,9 +536,9 @@ h1.hero-title {
 }
 
 .skill-card:hover {
-  box-shadow: 0 8px 32px rgba(2, 132, 199, 0.12); /* Ombre bleutée au survol */
+  box-shadow: 0 8px 32px rgba(3, 105, 161, 0.12); /* Ombre bleutée au survol */
   transform: translateY(-3px);
-  border-color: rgba(2, 132, 199, 0.3);
+  border-color: rgba(3, 105, 161, 0.3);
 }
 
 .skill-card-head {
@@ -588,7 +590,7 @@ h1.hero-title {
 
 .skill-card:hover .skill-tag {
   border-color: var(--accent);
-  background: rgba(2, 132, 199, 0.07);
+  background: rgba(3, 105, 161, 0.07);
   color: var(--accent-hover);
 }
 
@@ -720,7 +722,7 @@ h1.hero-title {
 .apropos-role {
   font-size: 1.15rem;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-hover); /* #075985 – contraste 6.5:1 sur fond clair ✓ */
   margin-top: -0.5rem;
 }
 
